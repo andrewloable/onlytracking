@@ -1,0 +1,37 @@
+<div class="list-container">
+  <!-- Week header -->
+  <div class="week-header">
+    <span class="week-label">This week</span>
+    <span class="week-total">
+      Week total:
+      <strong>{{ formatSeconds(entryService.weekTotalSeconds()) }}</strong>
+    </span>
+  </div>
+
+  <!-- Day groups -->
+  @for (group of entryService.dayGroups(); track group.dateKey) {
+    <div class="day-group">
+      <!-- Day header -->
+      <div class="day-header">
+        <span class="day-label">{{ group.label }}</span>
+        <span class="day-total">
+          Total:
+          <strong>{{ formatSeconds(group.totalSeconds) }}</strong>
+        </span>
+      </div>
+
+      <!-- Entries -->
+      <div class="entries-card">
+        @for (entry of group.entries; track entry.id; let i = $index) {
+          <app-time-entry-row [entry]="entry" [entryNumber]="group.entries.length - i" />
+        }
+      </div>
+    </div>
+  }
+
+  @if (entryService.dayGroups().length === 0) {
+    <div class="empty-state">
+      <p>No time entries this week. Start tracking time above!</p>
+    </div>
+  }
+</div>

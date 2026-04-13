@@ -1,0 +1,127 @@
+.timer-bar {
+  display: flex;
+  align-items: center;
+  background: var(--card-bg);
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+  padding: 0 16px;
+  height: 64px;
+  gap: 8px;
+}
+
+.description-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 15px;
+  color: var(--text-primary);
+  font-family: Roboto, sans-serif;
+
+  &::placeholder {
+    color: var(--text-secondary);
+  }
+}
+
+.timer-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.project-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: Roboto, sans-serif;
+  color: var(--primary-color);
+  transition: background 0.15s;
+
+  &:hover {
+    background: var(--hover-bg);
+  }
+
+  .add-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    color: var(--primary-color);
+  }
+
+  .project-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .project-label {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.icon-btn {
+  color: var(--text-secondary) !important;
+
+  &.active-icon {
+    color: var(--primary-color) !important;
+  }
+}
+
+.timer-display {
+  font-size: 20px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-primary);
+  min-width: 90px;
+  text-align: center;
+  padding: 0 8px;
+  letter-spacing: 1px;
+
+  &.running {
+    color: var(--primary-color);
+  }
+}
+
+.start-stop-btn {
+  min-width: 80px;
+  height: 36px;
+  border: none;
+  border-radius: 4px;
+  background: var(--primary-color);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: Roboto, sans-serif;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background 0.15s, opacity 0.15s;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &.stop {
+    background: #f44336;
+  }
+}
+
+// Project menu dot
+:host ::ng-deep .menu-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 8px;
+  flex-shrink: 0;
+}

@@ -1,0 +1,31 @@
+<div class="app-wrapper">
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand">
+        <img src="favicon.png" alt="OnlyTracking" class="brand-icon" />
+        <span class="brand-name">OnlyTracking</span>
+      </div>
+      <div class="header-actions">
+        <button mat-icon-button [matMenuTriggerFor]="themeMenu" [matTooltip]="'Theme: ' + themeService.theme()">
+          <mat-icon>{{ themeIcon }}</mat-icon>
+        </button>
+        <mat-menu #themeMenu="matMenu">
+          <button mat-menu-item (click)="setTheme('light')">
+            <mat-icon>light_mode</mat-icon> Light
+          </button>
+          <button mat-menu-item (click)="setTheme('dark')">
+            <mat-icon>dark_mode</mat-icon> Dark
+          </button>
+          <button mat-menu-item (click)="setTheme('system')">
+            <mat-icon>brightness_auto</mat-icon> System
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <app-timer-bar />
+    <app-time-entry-list />
+  </main>
+</div>

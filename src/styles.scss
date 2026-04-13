@@ -1,0 +1,68 @@
+@use '@angular/material' as mat;
+
+// ── Material M3 theme ──────────────────────────────────────────────────────────
+html {
+  @include mat.theme((
+    color: (
+      theme-type: light,
+      primary: mat.$azure-palette,
+    ),
+    typography: Roboto,
+    density: 0,
+  ));
+}
+
+.dark-theme {
+  @include mat.theme((
+    color: (
+      theme-type: dark,
+      primary: mat.$azure-palette,
+    ),
+  ));
+}
+
+// ── App CSS custom properties ──────────────────────────────────────────────────
+:root {
+  --app-bg:          #eef0f4;
+  --card-bg:         #ffffff;
+  --text-primary:    #1a1a1a;
+  --text-secondary:  #666666;
+  --border:          #e0e0e0;
+  --hover-bg:        #f5f7fa;
+  --primary-color:   #039be5;
+  --entry-num-bg:    #e1f5fe;
+  --entry-num-color: #0288d1;
+}
+
+.dark-theme {
+  --app-bg:          #0f1117;
+  --card-bg:         #1a1d24;
+  --text-primary:    #e8eaed;
+  --text-secondary:  #9aa0ad;
+  --border:          #2d3139;
+  --hover-bg:        #22252e;
+  --primary-color:   #29b6f6;
+  --entry-num-bg:    #0d2136;
+  --entry-num-color: #29b6f6;
+}
+
+// ── Global reset & base ────────────────────────────────────────────────────────
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: var(--app-bg);
+  color: var(--text-primary);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}

@@ -1,0 +1,80 @@
+<div class="timer-bar">
+  <input
+    class="description-input"
+    type="text"
+    placeholder="What are you working on?"
+    [value]="timer.description()"
+    (input)="onDescriptionInput($event)"
+  />
+
+  <div class="timer-controls">
+    <!-- Project selector -->
+    <button class="project-btn" [matMenuTriggerFor]="projectMenu" [class.has-project]="!!currentProject">
+      @if (!currentProject) {
+        <mat-icon class="add-icon">add_circle_outline</mat-icon>
+        <span>Project</span>
+      } @else {
+        <span class="project-dot" [style.background]="currentProject.color"></span>
+        <span class="project-label" [style.color]="currentProject.color">{{ currentProject.name }}</span>
+      }
+    </button>
+
+    <mat-menu #projectMenu="matMenu">
+      <button mat-menu-item (click)="selectProject(null)">
+        <mat-icon>block</mat-icon>
+        No project
+      </button>
+      @for (p of projects(); track p.id) {
+        <button mat-menu-item (click)="selectProject(p.id)">
+          <span class="menu-dot" [style.background]="p.color"></span>
+          {{ p.name }}
+        </button>
+      }
+      <mat-divider />
+      <button mat-menu-item (click)="openCreateProject()">
+        <mat-icon>add</mat-icon>
+        Create project
+      </button>
+    </mat-menu>
+
+    <!-- Tags -->
+    <button
+      mat-icon-button
+      class="icon-btn"
+      [class.active-icon]="timer.tags().length > 0"
+      matTooltip="Tags"
+    >
+      <mat-icon>sell</mat-icon>
+    </button>
+
+    <!-- Billable -->
+    <button
+      mat-icon-button
+      class="icon-btn"
+      [class.active-icon]="timer.billable()"
+      matTooltip="Billable"
+      (click)="toggleBillable()"
+    >
+      <mat-icon>attach_money</mat-icon>
+    </button>
+
+    <!-- Timer display -->
+    <span class="timer-display" [class.running]="timer.isRunning()">
+      {{ timer.formattedTime() }}
+    </span>
+
+    <!-- Start / Stop -->
+    <button
+      class="start-stop-btn"
+      [class.stop]="timer.isRunning()"
+      (click)="timer.toggleTimer()"
+    >
+      {{ timer.isRunning() ? 'STOP' : 'START' }}
+    </button>
+
+    <!-- More options (placeholder) -->
+    <button mat-icon-button class="icon-btn" matTooltip="More options">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </div>
+</div>
