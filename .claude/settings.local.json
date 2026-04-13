@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rtk ls:*)",
+      "Bash(npx @angular/cli version)",
+      "Bash(cp:*)",
+      "Bash(npm install:*)",
+      "Bash(npm show:*)",
+      "Bash(npm ls:*)",
+      "Bash(npx ng:*)",
+      "Bash(node -e ':*)",
+      "Bash(rtk git:*)"
+    ]
+  }
+}
